@@ -1,0 +1,31 @@
+<ul style="display: inline-block;" *ngFor="let f of feedbacks | async">
+    <li>
+        <div class="card">
+            <div class="card-body">
+              <h4 class="card-title text-primary">{{f.userName}}</h4>
+              <h6 class="card-subtitle mb-2 text-muted">{{f.userEmail}}</h6>
+              <p class="card-text">{{f.feedback_message}}</p>
+              <a href="#" class="card-link">
+                <span class="text-success" *ngIf="f.experience=='good'">
+                  {{f.experience}}
+                </span>
+                <span class="text-success" *ngIf="f.experience=='excellent'">
+                    {{f.experience}}
+                  </span>
+                <span class="text-muted" *ngIf="f.experience=='average'">
+                 {{f.experience}}
+                </span>
+                <span class="text-danger" *ngIf="f.experience=='poor'">
+                  {{f.experience}}
+                </span>
+              </a>
+              <a (click)="openModal(emailReply,f.userEmail)" class="card-link">Reply Through Email</a>
+            </div>
+          </div>
+    </li>
+</ul>
+
+
+<ng-template #emailReply>
+  <app-admin-panel></app-admin-panel>
+</ng-template>

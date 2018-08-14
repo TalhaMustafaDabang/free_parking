@@ -1,0 +1,20 @@
+
+<ul style="display: inline-block;" *ngFor="let u of users | async">
+  <li style="display: inline-block;list-style: none;margin-top:10px">
+      <div class="card border-primary mb-3" style="max-width: 20rem;">
+          <div class="card-header text-primary"><h3 style="text-align: center">{{u.userName}}</h3></div>
+          <div style="text-align: center" class="card-body">
+            <h5 class="text-primary"><h6 style="display: inline" class="text-muted">Email:&nbsp;</h6>{{u.email}}</h5>
+            <h5 class="text-primary"><h6 style="display: inline" class="text-muted">Numebr:&nbsp;</h6>{{u.number}}</h5>
+            <h5 class="text-primary"><h6 style="display: inline" class="text-muted">UID:&nbsp;</h6>{{u.uid}}</h5>
+            <button class="btn btn-danger btn-sm">Delete User</button>
+            
+</div>
+        </div>
+      
+        
+        
+  </li>
+
+
+

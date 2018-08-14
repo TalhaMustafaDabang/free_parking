@@ -1,0 +1,30 @@
+<div class="modal-header bg-primary">
+<h3 style="color: white; text-align: center">
+  <!-- Send Email To {{userEmail}} -->
+</h3>
+</div>
+
+
+<div class="modal-body">
+
+<form (ngSubmit)="submit(f)" #f="ngForm">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input name="email"  required #a="ngModel" validate 
+    [ngStyle]="{'border-color':a.errors && a.touched ? 'red' : 'lightgray'}"
+     email [(ngModel)]="emailRecived" type="email" class="form-control"
+      id="exampleInputEmail1" aria-describedby="emailHelp">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+
+  <div class="form-group">
+    <label for="exampleTextarea">Reply</label>
+    <textarea name="message"
+    required
+    class="form-control" id="exampleTextarea" rows="3"></textarea>
+  </div>
+
+  <button type="submit" (click)="submit(f)" class="btn btn-primary">Send Email</button>
+</form>
+
+</div>

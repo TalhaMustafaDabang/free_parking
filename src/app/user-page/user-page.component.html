@@ -1,0 +1,57 @@
+<div class="container-fluid">
+  <br>
+  <div class="row">
+    <div class="bg-light col-xs-3 col-sm-3 col-lg-3 col-xl-3">
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action disabled">
+            <img width="100%" src="../../assets/FREE-PARKING.png" alt="">
+            </a>
+            <a href="#" class="list-group-item list-group-item-action disabled">
+              {{user.email}}
+            </a>
+            <a href="#" class="list-group-item list-group-item-action disabled">
+              {{user.number}}
+            </a>
+            <a href="#" class="list-group-item list-group-item-action disabled">
+                {{user.userName}}
+              </a>
+              <a href="#" class="list-group-item list-group-item-action disabled">
+                {{user.email}}
+              </a>
+              <a href="#" class="list-group-item list-group-item-action disabled">
+                {{user.number}}
+              </a>
+              <a href="#" class="list-group-item list-group-item-action disabled">
+                  {{user.uid}}
+                </a>
+              </div>
+    </div> 
+
+    <div class="col-xs-9 col-sm-9 col-lg-9 col-xl-9">
+
+      
+
+        <div class="jumbotron">
+            <h1 style="text-align: center" class="text-primary">YOUR BOOKINGS FOR TODAY {{date}}</h1>
+            <hr class="my-4">
+           <ul style="display: inline-block;" *ngFor="let p of allBookings | async">
+              <!-- <h6 *ngIf="allBookings.length()==1" style="text-align: center" class="text-danger">YOU HAVN'T BOOK ANY SLOT FOR {{date}}</h6> -->
+           
+            <li style="display: inline-block;list-style: none;">
+                  <div class="card border-light mb-3" style="max-width: 20rem;">
+                    <div class="card-header">{{p.key}}</div>
+                    <div class="card-body">
+                      <h4 class="card-title">Slot Id {{p.solotId}}&nbsp;&nbsp;Parking Area {{p.parking_area_name}}</h4>
+                      <p class="card-text">You Have Reserved the slot {{p.solotId}} for {{p.hour}} Hour Of {{p.day}}</p>
+                      <button type="button" (click)="cancelBooking(p)" class="btn btn-danger">Cancel Booking</button>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+        
+          </div>
+
+      
+         </div>  
+  </div>
+</div>

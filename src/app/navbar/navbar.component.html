@@ -1,0 +1,53 @@
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+  <a class="navbar-brand" routerLink="">Free Parking</a>
+  <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <!-- <li class="nav-item active">
+        <a class="nav-link" routerLink="home">Home <span class="sr-only">(current)</span></a>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="(authS.checkAuth().signin)&&(authS.checkAuth().type.admin)" routerLink="user-list">Users List</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="(authS.checkAuth().signin)&&(authS.checkAuth().type.user)"  routerLink="feedback-form">Give Feedback</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="authS.checkAuth().signin&&authS.checkAuth().type.user" style="cursor: pointer;" routerLink="user-page">My Page</a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" *ngIf="authS.checkAuth().signin&&authS.checkAuth().type.admin" routerLink="feedback-review">Feedback Reviews</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="authS.checkAuth().signin" routerLink="parking-area">Parking Area</a>
+    </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="about">About</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav my-2">
+      <li class="nav-item">
+        <h5 class="nav-link" *ngIf="authS.checkAuth().signin&&authS.checkAuth().type.user" style="cursor: pointer;">{{auth.user.email}}</h5>
+        <h5 class="nav-link" *ngIf="authS.checkAuth().signin&&authS.checkAuth().type.admin" style="cursor: pointer;">Admin Account</h5>
+      </li>
+        <li class="nav-item">
+            <a class="nav-link" *ngIf="!authS.checkAuth().signin" routerLink="user-login"><b>Signin</b></a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" *ngIf="!authS.checkAuth().signin" routerLink="registration"><b>Register</b></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" *ngIf="authS.checkAuth().signin" style="cursor: pointer;" (click)="logout()"><b>Logout</b></a>
+            </li>
+     </ul>
+  </div>
+</nav>

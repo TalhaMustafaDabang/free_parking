@@ -1,0 +1,13 @@
+li
+{
+    display: inline;
+    list-style: none;
+}
+
+.card
+{
+    width: 300px;
+    max-height: 400px;
+    overflow-y: scroll;
+    margin-top: 30px;
+}

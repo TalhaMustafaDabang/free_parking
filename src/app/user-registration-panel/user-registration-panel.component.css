@@ -1,0 +1,15 @@
+#mydiv{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -17%;
+    margin-left: -25%;
+  }
+.same
+{
+
+}
+
+.redBorder{
+  border-color: red;
+}

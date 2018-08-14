@@ -1,0 +1,40 @@
+<div id="mydiv" class="card border-secondary mb-3">
+  <div class="card-header bg-primary" style="text-align: center"><h3 style="color:white">Register Yourself!</h3></div>
+  <div class="card-body">
+      <form (ngSubmit)="submit(f)" #f="ngForm">
+          <fieldset>
+           
+            <div class="form-group">
+              <label class="text-primary" for="exampleInputEmail1">Email address</label>
+              <input #e="ngModel" [ngStyle]="{'border-color':e.errors && e.touched ? 'red' : 'lightgray'}" 
+              required ngModel name="email" validate email type="email" 
+              class="form-control" id="exampleInputEmail1" 
+              aria-describedby="emailHelp" placeholder="Enter email">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label class="text-primary" for="name">Name</label>
+                <input #k="ngModel" pattern="[a-zA-Z .]+" required ngModel
+                 [ngStyle]="{'border-color':k.errors && k.touched ? 'red' : 'lightgray'}" name="name" type="text" class="form-control" placeholder="Enter Your Name">
+            </div>
+            
+            <div class="form-group">
+                <label class="text-primary" for="number">Phone Number</label>
+                <input #a="ngModel" pattern="[0-9+ -]+" required ngModel [ngStyle]="{'border-color':a.errors && a.touched ? 'red' : 'lightgray'}" name="number" type="text" class="form-control" placeholder="Enter Your Contact Numebr">
+            </div>
+            <div class="form-group">
+              <label class="text-primary" for="exampleInputPassword1">Password</label>
+              <input required #pass ngModel name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+         
+            <div class="form-group">
+            <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+            </div>
+          
+           
+            <button [disabled]="!f.valid" type="submit" class="btn btn-primary" style="float:right">Submit</button>
+            
+          </fieldset>
+        </form>
+  </div>
+</div>

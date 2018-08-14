@@ -1,0 +1,71 @@
+<div id="div">
+  <ul style="display: inline;" *ngFor="let i of parkings | async">
+    <li style="display: inline;list-style: none;">
+        <div id="slot" [ngClass]="i.isFree == 'true' ? 'freeSlot' : 'bookedSlot'">
+            
+          {{i.name}}
+          <br/>
+          <button type="button" (click)="getSelectedParkingsTimings(i,slotTimings)" *ngIf="i.isFree=='true'" class="btn btn-secondary btn-sm">Open Parking</button>
+          <!-- <button type="button" (click)="bookParking(i)" *ngIf="i.isFree=='true'" class="btn btn-secondary btn-sm">Book Parking</button> -->
+          
+          <!-- <button type="button" (click)="cancelBooking(i)" *ngIf="i.isFree=='flase'" style="" class="btn btn-sm btn-danger">Cancel Booking</button> -->
+        </div>
+       
+    </li>
+  </ul>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <ng-template #slotTimings>
+      <div style="text-align: center" class="modal-header">
+    
+          <h4 class="text-primary" style="">
+            
+              Parking Area 3, Slot # {{tempSlotForModal.name}}
+            <br>
+            <h6 class="text-muted">
+              {{fullDate}}
+            </h6>
+            </h4>
+              <br>
+           
+        </div>
+  
+  
+  
+  
+      <div class="modal-body">
+      <p class="text-muted" style="text-align: left">*0th Hour Refers To 12:01-12:59 AM, 23rd Hour Refers To 11:00-11:59 PM<br/>* Green Boxes Show Free Slot Hour<br/>*Red Box Show Busy Slot Hour</p>
+        <ul *ngFor="let p of bookings | async">
+          <li>
+         <h6  class="text-danger">This Slot Is Not Availible On The {{p.hour}} Hour Off Today!</h6>
+            {{setFalse(p.hour)}}
+          </li>
+        </ul>
+        <ul style="display: inline-block;" *ngFor="let a of timingArray">
+          <li style="display: inline-block;">
+            <div [ngClass]="timingArray[a.hour].isAvailible ? 'freeTimingSlot' : 'busyTimingSlot' " class="text-primary">
+              <button [disabled]="!a.isAvailible" (click)="bookParking(a.hour)" class="btn btn-primary btn-sm" >
+                  Book Parking
+              </button>
+              <button *ngIf="admin" (click)="cancelBooking(a.hour)" class="btn btn-secondary btn-sm" >
+                  Cancel Booking
+              </button>
+              <h6>
+              <span class="hourName">
+               Hour - {{a.hour}}
+              </span>
+            </h6>
+            </div>
+          </li>
+        </ul>
+        
+      </div>
+  </ng-template>
+</div>
